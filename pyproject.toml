@@ -1,0 +1,77 @@
+[tool.poetry]
+name = "langchain-llm"
+version = "0.1.0"
+description = "EAD template for building LLM applications with LangChain"
+authors = ["Mark Pace <pace@pace.org>"]
+readme = "README.md"
+packages = [{include = "langchain_llm", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+langchain-openai = "^0.2.0"
+langchain-anthropic = "^0.3.0"
+langchain-google-genai = "^2.0.0"
+langchain-core = "^0.3.0"
+python-dotenv = "^1.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+pytest-asyncio = "^0.23.0"
+ruff = "^0.8.0"
+ipykernel = "^6.29.0"
+jupyter = "^1.1.0"
+pytest-cov = "^7.0.0"
+jupytext = "^1.18.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 130
+target-version = "py310"
+exclude = [
+    ".git",
+    "__pycache__",
+    ".pytest_cache",
+    ".venv",
+    "venv",
+    "*.ipynb_checkpoints",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # isort (import sorting)
+    "N",   # pep8-naming
+    "W",   # pycodestyle warnings
+    "UP",  # pyupgrade (modern Python syntax)
+]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --strict-markers --tb=short"
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+]
+
+[tool.coverage.run]
+source = ["src"]
+omit = ["*/tests/*", "*/__pycache__/*", "*/site-packages/*"]
+
+[tool.coverage.report]
+fail_under = 80
+precision = 2
+show_missing = true
+skip_covered = false

@@ -1,0 +1,20 @@
+# Requirements for EAD LangChain Template
+# Generated from pyproject.toml for pip users
+#
+# Install with: pip install -r requirements.txt
+# Install package in editable mode: pip install -e .
+
+# Core dependencies
+langchain-openai>=0.2.0
+langchain-anthropic>=0.3.0
+langchain-google-genai>=2.0.0
+langchain-core>=0.3.0
+python-dotenv>=1.0.0
+
+# Development dependencies (optional)
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+pytest-cov>=7.0.0
+ruff>=0.8.0
+ipykernel>=6.29.0
+jupyter>=1.1.0
